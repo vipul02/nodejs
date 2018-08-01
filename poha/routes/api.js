@@ -2,9 +2,35 @@ const express = require('express');
 const router = express.Router();
 const Boss = require('../models/boss');
 
-// api to get the list of all the boses
+// api to get the list of all the bosses
 router.get('/poha-boses', function (req, res, next) {
-   res.send({type: 'GET'});
+   /* to get all the bosses
+    Boss.find({}).then(function (ninjas) {
+       res.send(ninjas)
+   });
+   Dpreciated geoNear in mongo 4.0
+   Boss.geoNear(
+       {type: "Point", coordinates: [parseFloat(req.query.lng), parseFloat(req.query.lat)]},
+       {maxDistance: 10000, spherical:true}
+   ).then(function (ninjas) {
+       res.send(ninjas);
+   });*/
+    // var point = {
+    //     type: "Point",
+    //     coordinates:
+    // };
+    // var geoOptions =  {
+    //     spherical: true,
+    //     maxDistance: 10000
+    // };
+    Boss.find({
+        'geo': {
+            $near: [parseFloat(req.query.lng), parseFloat(req.query.lat)],
+            $maxDistance: 10000
+        }
+    }).then(function (bosses) {
+        res.send(bosses);
+    });
 });
 
 // api to add a new poha boss

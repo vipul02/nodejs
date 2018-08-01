@@ -1,0 +1,69 @@
+{
+	
+	"name": "Banwar Lal",
+	"specs": "Special Masala",
+	"available": true,
+	"geometry": {
+		"type": "Point",
+		"coordinates": [-80.2356, 20.423657]
+	}
+},
+{
+	
+	"name": "Shanti Lal",
+	"specs": "Mutter",
+	"available": true,
+	"geometry": {
+		"type": "Point",
+		"coordinates": [-70.2356, 22.423657]
+	}
+},
+{
+	
+	"name": "PK Jain",
+	"specs": "Special Namkeen",
+	"available": true,
+	"geometry": {
+		"type": "Point",
+		"coordinates": [-85.2356, 20.423657]
+	}
+},
+{
+	
+	"name": "Kamlesh",
+	"specs": "Dhaniya",
+	"available": true,
+	"geometry": {
+		"type": "Point",
+		"coordinates": [-82.2356, 21.423657]
+	}
+},
+{
+	
+	"name": "Suresh",
+	"specs": "Pyaaz",
+	"available": true,
+	"geometry": {
+		"type": "Point",
+		"coordinates": [-81.2356, 23.423657]
+	}
+},
+{
+	
+	"name": "Rakesh",
+	"specs": "Chana",
+	"geometry": {
+		"type": "Point",
+		"coordinates": [-79.2356, 20.423657]
+	}
+},
+{
+	
+	"name": "Salman",
+	"specs": "Nimbu",
+	"available": true,
+	"geometry": {
+		"type": "Point",
+		"coordinates": [-78.2356, 20.423657]
+	}
+}
