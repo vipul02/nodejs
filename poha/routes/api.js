@@ -8,7 +8,12 @@ router.get('/poha-boses', function (req, res) {
 
 // api to add a new poha boss
 router.post('/poha-boses', function (req, res) {
-   res.send({type: 'POST'});
+   // console.log(req.body);
+   res.send({
+       type: 'POST',
+       name: req.body.name,
+       specs: req.body.specs
+   });
 });
 
 // api to update the details of poha boss
