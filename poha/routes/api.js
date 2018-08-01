@@ -21,7 +21,9 @@ router.put('/poha-boses/:id', function (req, res, next) {
 
 // api to delete the poha boss
 router.delete('/poha-boses/:id', function (req, res, next) {
-   res.send({type: 'DELETE'});
+   Boss.findByIdAndRemove({_id: req.params.id}).then(function (ninja) {
+       res.send(ninja);
+   });
 });
 
 module.exports = router;
