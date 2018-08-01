@@ -16,7 +16,11 @@ router.post('/poha-boses', function (req, res, next) {
 
 // api to update the details of poha boss
 router.put('/poha-boses/:id', function (req, res, next) {
-   res.send({type: 'PUT'});
+    Boss.findByIdAndUpdate({_id: req.params.id}, req.body).then(function () {
+        Boss.findOne({_id: req.params.id}).then(function (ninja) {
+            res.send(ninja);
+        });
+    });
 });
 
 // api to delete the poha boss
