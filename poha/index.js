@@ -15,6 +15,11 @@ app.use(bodyParser.json());
 // initialising the routes
 app.use('/api', require('./routes/api'));
 
+// error handling
+app.use(function (err, req, res, next) {
+    res.status(422).send({error:err.message});
+});
+
 // listen to request
 app.listen(4000, function () {
     console.log('Listening to the request at port no. 4000')
