@@ -23,13 +23,23 @@ router.get('/poha-boses', function (req, res, next) {
     //     spherical: true,
     //     maxDistance: 10000
     // };
-    Boss.find({
-        'geo': {
-            $near: [parseFloat(req.query.lng), parseFloat(req.query.lat)],
-            $maxDistance: 10000
+    // Boss.find({
+    //     'geo': {
+    //         $near: [parseFloat(req.query.lng), parseFloat(req.query.lat)],
+    //         $maxDistance: 10000
+    //     }
+    // }).then(function (bosses) {
+    //     res.send(bosses);
+    // });
+    Boss.aggregate([{
+        $geoNear: {
+            near: {
+                type: 'Point', coordinates: [parseFloat(req.query.lng), parseFloat(req.query.lat)]
+            },
+            spherical: true, maxDistance: 100000, distanceField: "dist.calculated"
         }
-    }).then(function (bosses) {
-        res.send(bosses);
+    }]).then(function(results){
+        res.send(results);
     });
 });
 
