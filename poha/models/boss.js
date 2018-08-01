@@ -1,6 +1,18 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// create schema for geolocation of the poha boss
+const GeoSchema = new Schema({
+    type: {
+        type: String,
+        default: "Point"
+    },
+    coordinates: {
+        type: [Number],
+        index: "2dsphere"
+    }
+});
+
 // create custom schema for poha boses
 const BossSchema = new Schema({
     name: {
@@ -13,8 +25,8 @@ const BossSchema = new Schema({
     available: {
         type: Boolean,
         default: false
-    }
-    // add a geo location
+    },
+    geometry: GeoSchema
 });
 
 const Boss = mongoose.model('boss', BossSchema);
