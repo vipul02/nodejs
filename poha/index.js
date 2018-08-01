@@ -1,8 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 // set up express app
 const app = express();
+
+// connect to mongodb
+mongoose.connect('mongodb://localhost/poha');
+mongoose.Promise = global.Promise;
 
 //setting up json body-parser
 app.use(bodyParser.json());

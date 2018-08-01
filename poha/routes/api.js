@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Boss = require('../models/boss');
 
 // api to get the list of all the boses
 router.get('/poha-boses', function (req, res) {
@@ -8,11 +9,8 @@ router.get('/poha-boses', function (req, res) {
 
 // api to add a new poha boss
 router.post('/poha-boses', function (req, res) {
-   // console.log(req.body);
-   res.send({
-       type: 'POST',
-       name: req.body.name,
-       specs: req.body.specs
+   Boss.create(req.body).then(function (boss) {
+       res.send(boss);
    });
 });
 
