@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" />
+    <title>Poha</title>
+</head>
+<body>
+<h1 class="title">Poha Boss - a Boss REST API</h1>
+<div id="homepage">
+    <h1>Search a Poha Shop in your area!</h1>
+    <div id="bosses"></div>
+</div>
+
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/react@15/dist/react.js"></script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+
+<!-- create react component-->
+<script type="text/babel">
+    var Bosses = React.createClass({
+        getInitialState: function() {
+            return({
+                bosses: []
+            });
+        },
+        render: function() {
+            var bosses = this.state.bosses;
+            bosses = bosses.map(function (boss, index) {
+                    console.log(boss.available);
+                    console.log(boss.name);
+                    console.log(boss.dist.calculated);
+                    console.log(boss.specs);
+            });
+            return (
+                <div>
+                    <form id="search" onSubmit={this.handelSubmit}>
+                        <label>Enter your latitude</label>
+                        <input type="text" ref="lat" placeholder="Latitude" required />
+                        <label>Enter your longitude</label>
+                        <input type="text" ref="lng" placeholder="Longitude" required />
+                        <input type="submit" value="Find Poha Store" />
+                    </form>
+                    <ul>{bosses}</ul>
+                </div>
+            );
+        },
+        handelSubmit: function (e) {
+            e.preventDefault();
+            var lng = this.refs.lng.value;
+            var lat = this.refs.lat.value;
+
+            fetch('/api/poha-boses/?lng=' + lng + '&lat=' + lat).then(function (data) {
+                return data.json();
+            }).then( json => {
+                this.setState({
+                    bosses: json
+                });
+                console.log(json);
+            });
+        }
+    });
+
+    ReactDOM.render(<Bosses />, document.getElementById('bosses'));
+</script>
+</body>
+</html>

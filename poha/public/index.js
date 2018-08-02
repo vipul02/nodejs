@@ -31,7 +31,7 @@ var Bosses = CreateClass({
             </form>
             <ul>{bosses}</ul>
             </div>
-    );
+        );
     },
     handelSubmit: function (e) {
         e.preventDefault();
