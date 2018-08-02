@@ -9,6 +9,9 @@ const app = express();
 mongoose.connect('mongodb://localhost/poha');
 mongoose.Promise = global.Promise;
 
+// returning the static files
+app.use(express.static('public'));
+
 //setting up json body-parser
 app.use(bodyParser.json());
 
